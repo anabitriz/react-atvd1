@@ -1,123 +1,142 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import {Image, StyleSheet} from 'react-native';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { StyleSheet, Text, View, Button, TextInput, Image, Alert } from 'react-native';
 
+export function App() {
+  const [email, botarEmail] = React.useState('');
+  const [senha, botarSenha] = React.useState('');
+
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.img}
+        source={{
+          uri: 'https://simplescontrole.com.br/wp-content/uploads/2024/05/usuario.png',
+        }}
+      />
+
+      <Text>Email</Text>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={botarEmail}
+      />
+
+      <Text>Senha</Text>
+      <TextInput
+        style={styles.input}
+        value={senha}
+        onChangeText={botarSenha}
+      />
+
+      <Button style={styles.botao}
+        title="                       Logar                      "
+        onPress={() => Alert.alert('Email: ' + email)}
+      />
+
+        <Text> </Text>
+
+      <Button
+        title="                Cadastrar-se               "
+        onPress={() => Alert.alert('Cadastro')}
+      />
+
+      <Text>Esqueceu a senha?</Text>
+
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+export function cadastro() {
+  const [nome, botarNome] = React.useState('');
+  const [email, botarEmail] = React.useState('');
+  const [senha, botarSenha] = React.useState('');
+
+  return (
+    <View style={styles.container}>
+      <header style= {styles.header}>Cadastro</header>
+      
+      <Text>Nome</Text>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={botarNome}
+      />
+
+      <Text>Email</Text>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={botarEmail}
+      />
+
+      <Text>Senha</Text>
+      <TextInput
+        style={styles.input}
+        value={senha}
+        onChangeText={botarSenha}
+      />
+
+      <Button
+        title="                Cadastro               "
+        onPress={() => Alert.alert('Cadastro')}
+      />
+
+
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+
+export default function esqueceuSenha() {
+  const [email, botarEmail] = React.useState('');
+
+  return (
+    <View style={styles.container}>
+      <header style={styles.header}>Esqueceu a senha?</header>
+
+      <Text>Email</Text>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={botarEmail}
+      />
+
+      <Button
+        title="                enviar               "
+        onPress={() => Alert.alert('esqueceuSenha')}
+      />
+
+      
+
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#e1ebf5',
+    alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 16,
   },
-  tinyLogo: {
-    width: 50,
-    height: 50,
+  img: {
+    width: 200,
+    height: 200
   },
-   title: {
-    textAlign: 'center',
-    marginVertical: 8,
-   },
-    fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 250,
+    backgroundColor: '#fff'
   },
-   separator: {
-    marginVertical: 8,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+  header: {
+    fontSize: '30px'
   },
-  logo: {
-    width: 66,
-    height: 58,
-  },
-});
-
-const DisplayAnImage = () => (
-  <SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-      <Image
-        style={styles.tinyLogo}
-        source={require('@expo/snack-static/react-native-logo.png')}
-      />
-    </SafeAreaView>
-  </SafeAreaProvider>
-);
-
-const Separator = () => <View style={styles.separator} />;
-
-function showAlert(message) {
-  if (Platform.OS === 'web') {
-    window.alert(message);
-  } else {
-    Alert.alert(message);
-  }
-}
-
-const Txt = ()=> (
-<SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-      
-    
-    </SafeAreaView>
-</SafeAreaProvider>
-)
-
-const TextInputExample = () => {
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
-
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        <View>
-        <Text style={styles.title}>
-          --Email
-        </Text>
-      </View>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-        />
-        <View>
-          <Text style={styles.title}>
-          **Senha
-          </Text>
-        </View>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="useless placeholder"
-          keyboardType="numeric"
-        />
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-};
-
-const App = () => (
-  <SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-       <View>
-        <Button
-          title="Logar"
-          onPress={() => showAlert('Simple Button pressed')}
-        />
-      </View>
-      <Separator />
-        <Button
-          title="Cadastre-se"
-          color="#f194ff"
-          onPress={() => showAlert('Button with adjusted color pressed')}
-        />
-      <Separator />
-      </SafeAreaView>
-  </SafeAreaProvider>
   
-)
-export default App;
-
-
-
+});
