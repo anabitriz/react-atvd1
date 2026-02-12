@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Image, Alert } from 'react-native';
 
-export function App() {
+export default function App() {
   const [email, botarEmail] = React.useState('');
   const [senha, botarSenha] = React.useState('');
 
@@ -29,7 +29,8 @@ export function App() {
         onChangeText={botarSenha}
       />
 
-      <Button style={styles.botao}
+      <Button
+      color = "#25a34f"
         title="                       Logar                      "
         onPress={() => Alert.alert('Email: ' + email)}
       />
@@ -90,7 +91,7 @@ export function cadastro() {
 }
 
 
-export default function esqueceuSenha() {
+export  function esqueceuSenha() {
   const [email, botarEmail] = React.useState('');
 
   return (
@@ -140,3 +141,4 @@ const styles = StyleSheet.create({
   },
   
 });
+//defaul só funciona em um!!
